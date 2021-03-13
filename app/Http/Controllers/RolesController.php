@@ -47,4 +47,9 @@ class RolesController extends Controller
 
         Role::find(3)->delete();
     }
+
+    public function show(Role $role)
+    {
+        return response()->json(['data' => $role]);
+    }
 }
