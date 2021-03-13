@@ -14,5 +14,6 @@ class Role extends Model
 //        return 'name';
 //    }
 
-    protected $fillable = ['name'];
+//    protected $fillable = ['name'];
+    protected $guarded = [];
 }
