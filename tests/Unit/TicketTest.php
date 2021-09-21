@@ -9,32 +9,24 @@ use Tests\TestCase;
 class TicketTest extends TestCase
 {
     use DatabaseTransactions;
+
+    public function getTestData()
+    {
+        return [
+            [0, true],
+            [1, false],
+        ];
+    }
+
     /**
-     * A basic unit test example.
-     *
-     * @return void
+     * @dataProvider getTestData
      */
-    public function test_example()
-    {
-        $this->assertTrue(true);
-    }
-
-    public function test_is_new()
+    public function testIsNew($status, $expectedResult)
     {
         $ticket = Ticket::factory()->create([
-            'status' => 0,
+            'status' => $status,
         ]);
 
-        $this->assertTrue($ticket->isNew());
+        $this->assertEquals($expectedResult, $ticket->isNew());
     }
-
-    public function test_is_not_new()
-    {
-        $ticket = Ticket::factory()->create([
-            'status' => 1,
-        ]);
-
-        $this->assertFalse($ticket->isNew());
-    }
-
 }
