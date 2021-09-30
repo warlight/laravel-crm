@@ -22,10 +22,14 @@ Route::post('login', [AuthController::class, 'login']);
 Route::get('logout', [AuthController::class, 'logout']);
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('roles', [RolesController::class, 'index']);
-    Route::post('roles', [RolesController::class, 'create']);
-    Route::put('roles/{role}', [RolesController::class, 'update']);
+    Route::get('home', [AuthController::class, 'home']);
 
-    Route::get('roles/{role}', [RolesController::class, 'show']);
-    Route::get('roles/{role}/users', [RolesController::class, 'users']);
+    Route::middleware(['roles:admin'])->group(function () {
+        Route::get('roles', [RolesController::class, 'index']);
+        Route::post('roles', [RolesController::class, 'create']);
+        Route::put('roles/{role}', [RolesController::class, 'update']);
+
+        Route::get('roles/{role}', [RolesController::class, 'show']);
+        Route::get('roles/{role}/users', [RolesController::class, 'users']);
+    });
 });

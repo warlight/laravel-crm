@@ -24,4 +24,9 @@ class AuthController extends Controller
 
         return response(true);
     }
+
+    public function home()
+    {
+        return response(Auth::user());
+    }
 }

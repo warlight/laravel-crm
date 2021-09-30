@@ -35,13 +35,13 @@ class AuthTest extends TestCase
         $response = $this->attemptToLogin($this->password);
         $response->assertStatus(200);
 
-        $response = $this->get('roles');
+        $response = $this->get('home');
         $response->assertStatus(200);
 
         $response = $this->get('logout');
         $response->assertStatus(200);
 
-        $response = $this->get('roles');
+        $response = $this->get('home');
         $response->assertStatus(301);
     }
 
@@ -50,7 +50,7 @@ class AuthTest extends TestCase
         $response = $this->attemptToLogin($this->password . '7');
         $response->assertStatus(301);
 
-        $response = $this->get('roles');
+        $response = $this->get('home');
         $response->assertStatus(301);
     }
 
@@ -59,7 +59,7 @@ class AuthTest extends TestCase
         $response = $this->attemptToLogin($this->password . '7');
         $response->assertStatus(301);
 
-        $response = $this->post('roles');
+        $response = $this->get('home');
         $response->assertStatus(301);
     }
 }
