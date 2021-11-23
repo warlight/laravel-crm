@@ -5,7 +5,7 @@ import AdminPage from './pages/AdminPage.vue';
 
 const routes = [
     {path: '/users', component: UsersList},
-    {path: '/users/:name', component: UserPage},
+    {path: '/users/:id', component: UserPage},
     {path: '/admin', component: AdminPage},
 ];
 

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h2 :class="getClass(user.role)">{{ user.name }} {{ user.last_name }}</h2>
+        <h2 :class="getClass(user.role)">{{ user.name }}</h2>
         <p>{{ text }}</p>
         <template v-if="user.role === 'client'">
             <small>{{ user.role }}</small>
@@ -8,7 +8,7 @@
         <template v-else>
             <p>{{ user.role }}</p>
         </template>
-        <router-link :to="'/users/' + user.name">User's page</router-link>
+        <router-link :to="'/users/' + user.id">User's page</router-link>
     </div>
 </template>
 
